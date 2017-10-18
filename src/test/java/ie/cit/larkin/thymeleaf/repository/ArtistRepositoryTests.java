@@ -23,7 +23,7 @@ public class ArtistRepositoryTests {
 	
 	@Test
 	public void countByGender() {
-		assertEquals(2, repo.countByGender("female"));
+		assertEquals(3, repo.countByGender("female"));
 		assertEquals(3, repo.countByGender("male"));
 	}
 
