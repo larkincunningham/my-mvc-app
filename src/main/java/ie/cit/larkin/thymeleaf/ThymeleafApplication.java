@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
 public class ThymeleafApplication extends WebMvcConfigurerAdapter {
@@ -17,7 +18,7 @@ public class ThymeleafApplication extends WebMvcConfigurerAdapter {
 	@Bean
 	public LocaleResolver localeResolver() {
 	    CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-	    localeResolver.setDefaultLocale(Locale.US);
+	    localeResolver.setDefaultLocale(Locale.UK);
 	    return localeResolver;
 	}
 	

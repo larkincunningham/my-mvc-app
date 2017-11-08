@@ -24,7 +24,7 @@ public class ArtistController {
 	@RequestMapping("/")
 	public String list(Model model) {
 		
-		Iterable<Artist> a= artistRepository.findAll();
+		Iterable<Artist> a= artistRepository.findByGender("male");
 		
 		model.addAttribute("artists", a);
 		

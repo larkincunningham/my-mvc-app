@@ -29,7 +29,7 @@ public class Artist {
 	@Length(min=4)
 	private String gender;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	@JoinTable(name="artist_movements",
 			joinColumns={@JoinColumn(name="artist_id", referencedColumnName="id")},
 			inverseJoinColumns={@JoinColumn(name="movement_id", referencedColumnName="id")})

@@ -6,7 +6,7 @@
 </head>
 <body> 
 <h1 th:text="#{artist.list.title}">Default Title</h1>
-
+<a href="?lang=fr" th:text="#{artist.list.french}">ffff</a> | <a href="?lang=en" th:text="#{artist.list.english}">eeee</a>
 <table>
 	<tr th:each="artist: ${artists}">
 		<td th:text="${artist.fullName}">Name</td>
