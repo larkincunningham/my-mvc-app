@@ -11,7 +11,6 @@ import ie.cit.larkin.thymeleaf.entity.Artist;
 
 public interface ArtistRepository extends CrudRepository<Artist, Integer>{
 	
-	@Secured("ROLE_ADMIN")
 	public List<Artist> findByGender(String gender); // SELECT * FROM artists WHERE gender = 'xxxxx'
 	public List<Artist> findByFullNameAndGender(String string, String string2);
 

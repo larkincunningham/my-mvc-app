@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -36,6 +37,7 @@ public class Artist {
 	public List<Movement> movements;
 	
 	@Column(name="fullName")
+	@Size(min=3, max=150)
 	private String fullName;
 	
 	public int getId() {
