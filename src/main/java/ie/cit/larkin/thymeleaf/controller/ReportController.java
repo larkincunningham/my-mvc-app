@@ -15,40 +15,20 @@ import ie.cit.larkin.thymeleaf.repository.ArtistRepository;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/artist")
-public class ArtistController {
+@RequestMapping("/report")
+public class ReportController {
 
 	@Autowired
 	ArtistRepository artistRepository;
 
-	@RequestMapping("/")
-	public String list(Model model) {
-		
-		Iterable<Artist> a= artistRepository.findByGender("male");
-		
-		model.addAttribute("artists", a);
-		
-		return "artist/list";
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String view(Model model, @PathVariable("id") int id) {
-		
-		Artist a= artistRepository.findOne(id);
-		
-		model.addAttribute("artist", a);
-		
-		return "artist/view";
-	}
-
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	@RequestMapping(value = "/dash", method = RequestMethod.GET)
 	public String dash(Model model) {
 		
 		long count = artistRepository.count();
 		
 		model.addAttribute("count", count);
 		
-		return "dashboard";
+		return "report/dashboard";
 	}
 	
 }

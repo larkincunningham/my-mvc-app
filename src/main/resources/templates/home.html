@@ -5,17 +5,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body> 
-<h1 th:text="#{home.title}">Default Title</h1>
 
-<div>
-<b>Menu</b><br/>
-<p>Everyone Option</p>
+<a th:href="@{?lang=fr}">French</a> | <a th:href="@{?lang=en}">English</a>
 
-<p sec:authorize="hasRole('ROLE_ADMIN')">
-  Admin Option
+<h1 th:text="#{home.title}">Home</h1>
+
+<p th:text="'Hello ' + ${#authentication.name} + ', here are your options:'" style="font-weight:bold;">Options</p>
+
+<a href="/" th:href="@{/}"><span th:text="#{menu.home}">Home</span></a>
+
+<p sec:authorize="isAuthenticated()">
+   <a th:href="@{/artist/}" href="/artist/"><span th:text="#{menu.artists}">Artists</span></a>
 </p>
 
-</div>
+<p sec:authorize="hasRole('ROLE_ADMIN')">
+   <a th:href="@{/report/dash}" href="/report/dash"><span th:text="#{menu.dashboard}">Dashboard</span></a>
+</p>
 
 </body>
 </html>
