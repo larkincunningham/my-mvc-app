@@ -62,4 +62,11 @@ public class AuditAspect {
 	    System.out.println(joinPoint.getSignature() + " executed in " + executionTime + "ms");
 	    return proceed;
 	}
+	
+	// All methods that are annotated with @Secure
+	@Before("execution(@org.springframework.security.access.annotation.Secured * *(..))")
+	public void securedMethod(JoinPoint jp) {
+		System.out.println("Accessing secured method: " + jp.getSignature());
+	}
+	
 }
