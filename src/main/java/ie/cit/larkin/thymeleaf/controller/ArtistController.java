@@ -29,10 +29,12 @@ public class ArtistController {
 	@RequestMapping("/")
 	public String list(Model model) {
 		
-		Iterable<Artist> a= artistService.findMales();
+		Iterable<Artist> a= artistService.findAllMales();
+		model.addAttribute("artistsMale", a);
 		
-		model.addAttribute("artists", a);
-		
+		Iterable<Artist> b= artistService.findAllFemales();		
+		model.addAttribute("artistsFemale", b);
+
 		return "artist/list";
 	}
 	

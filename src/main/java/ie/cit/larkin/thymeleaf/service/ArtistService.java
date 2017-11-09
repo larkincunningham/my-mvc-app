@@ -14,14 +14,18 @@ public class ArtistService {
 	ArtistRepository repo;
 	
 	@LogExecutionTime
-	public Iterable<Artist> findMales() {
+	public Iterable<Artist> findAllMales() {
 		return repo.findByGender("male");
 	}
 
-	public Iterable<Artist> findFemales() {
+	public Iterable<Artist> findAllFemales() {
 		return repo.findByGender("female");
 	}
 
+	public Iterable<Artist> findAll() {
+		return repo.findAll();
+	}
+	
 	public Artist findById(int id) {
 		return repo.findOne(id);
 	}

@@ -11,9 +11,20 @@
    <a th:href="@{/artist/create}" href="/artist/create"><span th:text="#{artist.list.addnew}">Add New</span></a>
 </p>
 
+
 <a href="?lang=fr" th:text="#{artist.list.french}">ffff</a> | <a href="?lang=en" th:text="#{artist.list.english}">eeee</a>
+
+<p>Male artists:</p>
 <table>
-	<tr th:each="artist: ${artists}">
+	<tr th:each="artist: ${artistsMale}">
+		<td th:text="${artist.fullName}">Name</td>
+		<td>[<a th:href="@{/artist/__${artist.id}__}">view</a>]</td>
+	</tr>
+</table>
+
+<p>Female artists:</p>
+<table>
+	<tr th:each="artist: ${artistsFemale}">
 		<td th:text="${artist.fullName}">Name</td>
 		<td>[<a th:href="@{/artist/__${artist.id}__}">view</a>]</td>
 	</tr>

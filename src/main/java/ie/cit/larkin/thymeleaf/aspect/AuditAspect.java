@@ -1,10 +1,13 @@
 package ie.cit.larkin.thymeleaf.aspect;
 
 import java.util.Date;
+import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -16,7 +19,6 @@ import org.springframework.stereotype.Component;
 import ie.cit.larkin.thymeleaf.annotation.LogExecutionTime;
 import ie.cit.larkin.thymeleaf.entity.Artist;
 import ie.cit.larkin.thymeleaf.entity.Audit;
-import ie.cit.larkin.thymeleaf.repository.AuditRepository;
 import ie.cit.larkin.thymeleaf.service.AuditService;
 
 @Aspect
@@ -25,7 +27,12 @@ public class AuditAspect {
 
 	@Autowired
 	AuditService auditService;
-		
+
+	@After("execution(* *.view(..))")
+	public void view() {
+		System.out.println("In the more liberal view advice!");
+	}
+	
 	@Before("execution(* ie.cit.larkin.thymeleaf.controller.ArtistController.view(..,int)) && args(..,id)")
 	public void viewArtist(JoinPoint jp, int id) {
 		System.out.println("In the viewArtist advice!");
@@ -67,6 +74,11 @@ public class AuditAspect {
 	@Before("execution(@org.springframework.security.access.annotation.Secured * *(..))")
 	public void securedMethod(JoinPoint jp) {
 		System.out.println("Accessing secured method: " + jp.getSignature());
+	}
+	
+	@AfterReturning(value="execution(* org.springframework.data.repository.CrudRepository+.findByGender(String)) && args(gender)", returning="artists")
+	public void artistLists(JoinPoint jp, List<Artist> artists, String gender) {
+		System.out.println("There were " + artists.size() + " " + gender + " artists.");
 	}
 	
 }
