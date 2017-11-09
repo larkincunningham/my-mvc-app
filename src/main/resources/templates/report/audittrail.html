@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Artists</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body> 
+<h1>Audit Trail</h1>
+
+<table border="1">
+	<tr th:each="audit: ${audits}">
+		<td th:text="${audit.username}"></td>
+		<td th:text="${audit.message}"></td>
+		<td th:text="${audit.timestamp}"></td>
+	</tr>
+</table>
+
+</body>
+</html>

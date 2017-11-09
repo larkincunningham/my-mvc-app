@@ -19,7 +19,8 @@
 </p>
 
 <p sec:authorize="hasRole('ROLE_ADMIN')">
-   <a th:href="@{/report/dash}" href="/report/dash"><span th:text="#{menu.dashboard}">Dashboard</span></a>
+   <a th:href="@{/report/dash}" href="/report/dash"><span th:text="#{menu.dashboard}">Dashboard</span></a><br/>
+   <a th:href="@{/report/audit}" href="/report/audit"><span th:text="#{menu.audittrail}">Audit Trail</span></a>
 </p>
 
 <p>Note that there are better ways of including a menu throughout your app using layouts: see <a href="http://www.thymeleaf.org/doc/articles/layouts.html">http://www.thymeleaf.org/doc/articles/layouts.html</a>

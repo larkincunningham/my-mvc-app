@@ -1,7 +1,5 @@
 package ie.cit.larkin.thymeleaf.controller;
 
-import java.util.Locale;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ie.cit.larkin.thymeleaf.entity.Artist;
-import ie.cit.larkin.thymeleaf.repository.ArtistRepository;
-
+import ie.cit.larkin.thymeleaf.service.ArtistService;
 
 /**
  * Handles requests for the application home page.
@@ -25,12 +24,12 @@ import ie.cit.larkin.thymeleaf.repository.ArtistRepository;
 public class ArtistController {
 
 	@Autowired
-	ArtistRepository artistRepository;
+	ArtistService artistService;
 
 	@RequestMapping("/")
 	public String list(Model model) {
 		
-		Iterable<Artist> a= artistRepository.findByGender("male");
+		Iterable<Artist> a= artistService.findMales();
 		
 		model.addAttribute("artists", a);
 		
@@ -40,7 +39,7 @@ public class ArtistController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(Model model, @PathVariable("id") int id) {
 		
-		Artist a= artistRepository.findOne(id);
+		Artist a= artistService.findById(id);
 		
 		model.addAttribute("artist", a);
 		
@@ -65,7 +64,7 @@ public class ArtistController {
     		return "artist/create";
     	}
     	
-    	artistRepository.save(artist);
+    	artistService.save(artist);
     	
     	model.addAttribute("artist", artist);
     	
